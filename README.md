@@ -19,20 +19,22 @@ QUESTER is a Web Pentesting &amp; Bug Bounty Recon tool which queries URLs / Sub
       subfinder -d domain.com -silent | ./quester.sh -subdomains                 #Extracts Valid SubDomains, Compatible with subfinder
 
       Examples:
-			                  echo domain.com | waybackurls | ./quester.sh
+                     echo domain.com | waybackurls | ./quester.sh
                          
-                        cat urls.txt | ./quester.sh
+                     cat urls.txt | ./quester.sh
                         
-                        cat subdomains.txt | ./quester.sh -subdomains
+                     cat subdomains.txt | ./quester.sh -subdomains
                                 
-			echo domain.com | waybackurls | ./quester.sh -match-code 200 
+                     echo domain.com | waybackurls | ./quester.sh -match-code 200 
 			
-	                subfinder -d domain.com -silent | ./quester.sh -subdomains
+                     subfinder -d domain.com -silent | ./quester.sh -subdomains
     ------------------------------------------------------------------------------------------------------------------------------------------------
 
 ![Scrnsht1](https://github.com/febinrev/quester/raw/main/Screenshots/Screenshot%20from%202021-02-12%2020-45-35.png)
 
 ![scrnsht2](https://github.com/febinrev/quester/raw/main/Screenshots/Screenshot%20from%202021-02-12%2020-47-06.png)
+
+![Banner](https://github.com/febinrev/quester/raw/main/Screenshots/Screenshot%20from%202021-02-12%2021-08-31.png)
 
 
 
