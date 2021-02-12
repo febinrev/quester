@@ -7,7 +7,7 @@ QUESTER is a Web Pentesting &amp; Bug Bounty Recon tool which queries URLs / Sub
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
 
-       <------------>
+      <------------>
       <   QU35T3R  >       Coded by Febin.     Twitter: twitter.com/febinrev
       <------------>	
       Usage:
@@ -31,4 +31,8 @@ QUESTER is a Web Pentesting &amp; Bug Bounty Recon tool which queries URLs / Sub
     ------------------------------------------------------------------------------------------------------------------------------------------------
 
 ![Scrnsht1](https://github.com/febinrev/quester/raw/main/Screenshots/Screenshot%20from%202021-02-12%2020-45-35.png)
+
+![scrnsht2](https://github.com/febinrev/quester/raw/main/Screenshots/Screenshot%20from%202021-02-12%2020-47-06.png)
+
+
 
