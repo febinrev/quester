@@ -12,11 +12,11 @@ QUESTER is a Web Pentesting &amp; Bug Bounty Recon tool which queries URLs / Sub
       <------------>	
       Usage:
 	
-     ./quester.sh -h                                                                                           #Help Message
+     ./quester.sh -h                                                                    #Help Message
 
       cat urls.txt | ./quester.sh -match-code <status_code>
       cat urls.txt | ./quester.sh -match-length <Length>
-      subfinder -d domain.com -silent | ./quester.sh -subdomains                           #Extracts Valid SubDomains, Compatible with subfinder
+      subfinder -d domain.com -silent | ./quester.sh -subdomains                 #Extracts Valid SubDomains, Compatible with subfinder
 
       Examples:
 			                  echo domain.com | waybackurls | ./quester.sh
@@ -25,7 +25,7 @@ QUESTER is a Web Pentesting &amp; Bug Bounty Recon tool which queries URLs / Sub
                         
                         cat subdomains.txt | ./quester.sh -subdomains
                                 
-			                  echo domain.com | waybackurls | ./quester.sh -match-code 200 
+			echo domain.com | waybackurls | ./quester.sh -match-code 200 
 			
-			                  subfinder -d domain.com -silent | ./quester.sh -subdomains
+	                subfinder -d domain.com -silent | ./quester.sh -subdomains
     ------------------------------------------------------------------------------------------------------------------------------------------------
