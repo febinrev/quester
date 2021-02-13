@@ -6,35 +6,23 @@ QUESTER is a Web Pentesting &amp; Bug Bounty Recon tool which queries URLs / Sub
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
-
-      <------------>
-      <   QU35T3R  >       Coded by Febin.     Twitter: twitter.com/febinrev
-      <------------>	
-      Usage:
+             <------------>
+             <   QU35T3R  >       Coded by Febin.     Twitter: twitter.com/febinrev
+             <------------>	
+             Usage:
 	
-     ./quester.sh -h                                                                    #Help Message
+            ./quester.sh -h                                                     #Help Message
 
-      cat urls.txt | ./quester.sh -match-code <status_code>
-      cat urls.txt | ./quester.sh -match-length <Length>
-      subfinder -d domain.com -silent | ./quester.sh -subdomains                 #Extracts Valid SubDomains, Compatible with subfinder
+            ./quester.sh [options] <wordlist>
+ 
+             ./quester.sh -all urls.txt                                         # crawls over the given URLs and prints status
+             ./quester.sh all urls.txt
+             ./quester.sh -match-code <status_code> urls.txt
+             ./quester.sh -match-length <Length> urls.txt
+             ./quester.sh -endpoints urls.txt                                   #Extracts Endpoints from Given URLs
+             ./quester.sh -endpoints -url http://target.com/index               #Extracts Endpoints from Given URL
+             ./quester.sh -subdomains subdomains.txt                            #Extracts Valid SubDomains, Compatible with subfinder
 
-      Examples:
-                     echo domain.com | waybackurls | ./quester.sh
-                         
-                     cat urls.txt | ./quester.sh
-                        
-                     cat subdomains.txt | ./quester.sh -subdomains
-                                
-                     echo domain.com | waybackurls | ./quester.sh -match-code 200 
-			
-                     subfinder -d domain.com -silent | ./quester.sh -subdomains
+
     ------------------------------------------------------------------------------------------------------------------------------------------------
-
-![Scrnsht1](https://github.com/febinrev/quester/raw/main/Screenshots/Screenshot%20from%202021-02-12%2020-45-35.png)
-
-![scrnsht2](https://github.com/febinrev/quester/raw/main/Screenshots/Screenshot%20from%202021-02-12%2020-47-06.png)
-
-![Banner](https://github.com/febinrev/quester/raw/main/Screenshots/Screenshot%20from%202021-02-12%2021-08-31.png)
-
-
 
