@@ -51,21 +51,21 @@ printf "*********************\n"
 usage(){
 	printf "
 <------------>
-<   QU35T3R  >       Coded by Febin.     Twitter: twitter.com/febinrev
+<  QU35T3R   >       Coded by Febin.     Twitter: twitter.com/febinrev
 <------------>	
 Usage:
 	
-$0 -h                                                                                           #Help Message
+$0 -h                                                   #Help Message
 
 $0 [options] <wordlist>
  
- $0 -all urls.txt                                                     # crawls over the given URLs and prints status
+ $0 -all urls.txt                                       # crawls over the given URLs and prints status
  $0 all urls.txt
  $0 -match-code <status_code> urls.txt
  $0 -match-length <Length> urls.txt
- $0 -endpoints urls.txt                                            #Extracts Endpoints from Given URLs
+ $0 -endpoints urls.txt                                 #Extracts Endpoints from Given URLs
  $0 -endpoints -url http://target.com/index             #Extracts Endpoints from Given URL
- $0 -subdomains subdomains.txt                            #Extracts Valid SubDomains, Compatible with subfinder
+ $0 -subdomains subdomains.txt                          #Extracts Valid SubDomains, Compatible with subfinder
 
 			\n"
 }
