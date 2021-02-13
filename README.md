@@ -4,7 +4,7 @@
 
 Compatible with other tools like Subfinder, waybackurls, sublist3r:
 
-subfinder -d target.com -silent > domains.txt
+subfinder -d target.com -silent > subdomains.txt
 echo target.com | waybackurls > urls.txt
 
 
