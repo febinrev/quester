@@ -1,8 +1,16 @@
 # QU35T3R
 
-QUESTER is a Web Pentesting &amp; Bug Bounty Recon tool which queries URLs / Subdomains from the given input stream.
+### QUESTER is a Web Pentesting &amp; Bug Bounty Recon tool which queries URLs / Subdomains from the given list of URLs or Subdomains.
+
+Compatible with other tools like Subfinder, waybackurls, sublist3r:
+
+subfinder -d target.com -silent > domains.txt
+echo target.com | waybackurls > urls.txt
 
 
+./quester.sh -all urls.txt
+
+./quester.sh -subdomains subdomains.txt
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
