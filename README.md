@@ -30,8 +30,8 @@ echo target.com | waybackurls > urls.txt
              ./quester.sh -endpoints urls.txt                                   # Extracts Endpoints from Given URLs
              ./quester.sh -endpoints -url http://target.com/index               # Extracts Endpoints from Given URL
              ./quester.sh -subdomains subdomains.txt                            # Extracts Valid SubDomains, Compatible with subfinder
-	     ./quester.sh -parameters urls.txt                                # Extracts Input Parameters from the given list of URLs
-             ./quester.sh -parameters -url http://target.com/index            # Extracts Parameters from the given URL
+	     ./quester.sh -parameters urls.txt                                  # Extracts Input Parameters from the given list of URLs
+             ./quester.sh -parameters -url http://target.com/index              # Extracts Parameters from the given URL
 
 
 
