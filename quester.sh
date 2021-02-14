@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 
 #QUESTER           Coded by Febin.     Twitter: twitter.com/febinrev#
 geturl_curl(){
@@ -47,6 +47,16 @@ printf "*********************\n"
 
 }
 
+getparams(){
+URL=$1
+
+printf "Parameters In $URL\n"
+printf "~~~~~~~~~~~~~~~~~~~~~\n"
+curl $URL --connect-timeout 2 -s | grep "<input " | sed s/name=/"\nPaRam:"/g | sed s/" "/"\n"/g | tr "<>" "\n" | grep "PaRam:" | sed s/"PaRam:"//g
+
+printf "\n~~~~~~~~~~~~~~~~~~~~~\n"
+}
+
 
 usage(){
 	printf "
@@ -61,11 +71,13 @@ $0 [options] <wordlist>
  
  $0 -all urls.txt                                       # crawls over the given URLs and prints status
  $0 all urls.txt
- $0 -match-code <status_code> urls.txt
- $0 -match-length <Length> urls.txt
- $0 -endpoints urls.txt                                 #Extracts Endpoints from Given URLs
- $0 -endpoints -url http://target.com/index             #Extracts Endpoints from Given URL
- $0 -subdomains subdomains.txt                          #Extracts Valid SubDomains, Compatible with subfinder
+ $0 -match-code <status_code> urls.txt                  # Matches URLs According to the Status Code
+ $0 -match-length <Length> urls.txt                     # Matches URLs According to the Content Length
+ $0 -endpoints urls.txt                                 # Extracts Endpoints from Given URLs
+ $0 -endpoints -url http://target.com/index             # Extracts Endpoints from Given URL
+ $0 -subdomains subdomains.txt                          # Extracts Valid SubDomains, Compatible with subfinder
+ $0 -parameters urls.txt                                # Extracts Input Parameters from the given list of URLs
+ $0 -parameters -url http://target.com/index            # Extracts Parameters from the given URL
 
 			\n"
 }
@@ -113,10 +125,21 @@ then
 		extract_endpoints $w
 		done
 
-	elif [ "$1" == "-endpoints" ] && [ "$2" == "-u"  ] || [ "$2" == "-url"  ]
+	elif [ "$1" == "-endpoints" ] && ([ "$2" == "-u"  ] || [ "$2" == "-url"  ])
 	then
 	extract_endpoints $3
 
+	
+	elif [ "$1" == "-parameters" ] && [ -f $2 ]
+	then
+		for w in $(cat $2)
+		do   
+		getparams $w
+		done
+	
+	elif [ "$1" == "-parameters" ] && ([ "$2" == "-u"  ] || [ "$2" == "-url"  ])
+	then
+	getparams $3
 
 	elif [[ "$1" == "all" ]] || [[ "$1" == "-all" ]] && [ -f $2 ]
 	then
