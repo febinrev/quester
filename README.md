@@ -36,4 +36,22 @@ echo target.com | waybackurls > urls.txt
 
 
     ------------------------------------------------------------------------------------------------------------------------------------------------
+![help](https://github.com/febinrev/quester/raw/main/screenshots/help.png)
+
+
+Examples:
+
+![URL_match](https://github.com/febinrev/quester/raw/main/screenshots/urls.png)
+
+![subdomains](https://github.com/febinrev/quester/raw/main/screenshots/subdomains.png)
+
+![Endpoints](https://github.com/febinrev/quester/raw/main/screenshots/endpoints.png)
+
+![Parameters](https://github.com/febinrev/quester/raw/main/screenshots/params.png)
+
+
+
+
+
+
 
