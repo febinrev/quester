@@ -1,6 +1,8 @@
  #!/bin/bash
 
-#QUESTER           Coded by Febin.     Twitter: twitter.com/febinrev#
+#QUESTER           Author: Febin.     Twitter: twitter.com/febinrev#
+
+
 geturl_curl(){
 
 URL=""
@@ -58,10 +60,25 @@ printf "\n~~~~~~~~~~~~~~~~~~~~~\n"
 }
 
 
+shodan1(){
+
+domain=$(curl "https://api.shodan.io//dns/resolve?key=MM72AkzHXdHpC8iP65VVEEVrJjp7zkgd&hostnames=$1" -s | sed s/"{"//g | sed s/"}"//g | sed s/$1//g | sed s/'"'//g | sed s/": "//g)
+
+if [ "$domain" == "null" ]
+then
+	echo "$1 not found in shodan Database"
+else
+	echo $1  : $domain
+	curl "https://api.shodan.io//shodan/host/$domain?key=MM72AkzHXdHpC8iP65VVEEVrJjp7zkgd&minify=true" -s | jq | tr "{}" " " | sed s/":"/" ==> "/g | tr '"' " "
+	printf "\n~~~~~~~~~~~~~~~~~~~~\n\n"
+fi
+}
+
+
 usage(){
 	printf "
 <------------>
-<  QU35T3R   >       Coded by Febin.     Twitter: twitter.com/febinrev
+<  QU35T3R   >       Author: Febin     Twitter: twitter.com/febinrev
 <------------>	
 Usage:
 	
@@ -78,18 +95,22 @@ $0 [options] <wordlist>
  $0 -subdomains subdomains.txt                          # Extracts Valid SubDomains, Compatible with subfinder
  $0 -parameters urls.txt                                # Extracts Input Parameters from the given list of URLs
  $0 -parameters -url http://target.com/index            # Extracts Parameters from the given URL
+ $0 -shodan domains.txt                                 # Searches the domains in Shodan database
+ $0 -shodan -domain target.com                          # Searches the given domain in Shodan
 
 			\n"
 }
 
 curl=$(which curl)
-if [ $curl ]
+jq=$(which jq)
+
+if [ $curl ] && [ $jq ]
 then
 	if [ "$1" == "-h" ] || [ "$1" == "--help" ]
 	then
 	usage
 	
-	elif [ "$1" == "-match-code" ] && [ -f $3 ]
+	elif [ "$1" == "-match-code" ] && [ $2 ] &&[ -f $3 ]
 	then
 	printf "Domain/URL                                                                                HTTP Status            Content-Length  \n"
 	printf "\n"          
@@ -99,7 +120,7 @@ then
 		done
 	
 	
-	elif [ "$1" == "-match-length" ] && [ -f $3 ]
+	elif [ "$1" == "-match-length" ] && [ $2 ]  && [ -f $3 ]
 	then
 	printf "Domain/URL                                                                                HTTP Status            Content-Length  \n"
 	printf "\n"     
@@ -125,7 +146,7 @@ then
 		extract_endpoints $w
 		done
 
-	elif [ "$1" == "-endpoints" ] && ([ "$2" == "-u"  ] || [ "$2" == "-url"  ])
+	elif [ "$1" == "-endpoints" ] && ([ "$2" == "-u"  ] || [ "$2" == "-url"  ]) && [ $3 ] 
 	then
 	extract_endpoints $3
 
@@ -137,9 +158,22 @@ then
 		getparams $w
 		done
 	
-	elif [ "$1" == "-parameters" ] && ([ "$2" == "-u"  ] || [ "$2" == "-url"  ])
+	elif [ "$1" == "-parameters" ] && ([ "$2" == "-u"  ] || [ "$2" == "-url"  ]) && [ $3 ] 
 	then
 	getparams $3
+
+	elif [ "$1" == "-shodan" ] && [ -f $2 ]
+	then
+		for w in $(cat $2)
+		do   
+		shodan1 $w
+		done
+
+	elif [ "$1" == "-shodan" ] && ([ "$2" == "-d"  ] || [ "$2" == "-domain"  ]) && [ $3 ] 
+	then
+	shodan1 $3
+
+
 
 	elif [[ "$1" == "all" ]] || [[ "$1" == "-all" ]] && [ -f $2 ]
 	then
@@ -156,5 +190,7 @@ then
 	fi
 
 else
-	echo "Curl Not Found! It is necessary for this to to run!"
+	echo "Curl / Jq Not Found! It is necessary for this to to run!"
 fi
+
+
