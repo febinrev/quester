@@ -15,7 +15,7 @@ echo target.com | waybackurls > urls.txt
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
              <------------>
-             <   QU35T3R  >       Coded by Febin.     Twitter: twitter.com/febinrev
+             <   QU35T3R  >       Author: Febin.     Twitter: twitter.com/febinrev
              <------------>	
              Usage:
 	
@@ -32,7 +32,8 @@ echo target.com | waybackurls > urls.txt
              ./quester.sh -subdomains subdomains.txt                            # Extracts Valid SubDomains, Compatible with subfinder
              ./quester.sh -parameters urls.txt                                  # Extracts Input Parameters from the given list of URLs
              ./quester.sh -parameters -url http://target.com/index              # Extracts Parameters from the given URL
-
+             ./quester.sh -shodan domains.txt                                 # Searches the domains in Shodan database
+             ./quester.sh -shodan -domain target.com                          # Searches the given domain in Shodan
 
 
     ------------------------------------------------------------------------------------------------------------------------------------------------
@@ -48,6 +49,11 @@ Examples:
 ![Endpoints](https://github.com/febinrev/quester/raw/main/screenshots/endpoints.png)
 
 ![Parameters](https://github.com/febinrev/quester/raw/main/screenshots/params.png)
+
+![Shodan](https://github.com/febinrev/quester/raw/main/screenshots/shodan.png)
+
+![Shodan_list](https://github.com/febinrev/quester/raw/main/screenshots/shodan_list.png)
+
 
 
 
