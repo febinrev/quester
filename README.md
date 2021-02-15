@@ -37,8 +37,7 @@ echo target.com | waybackurls > urls.txt
 
 
     ------------------------------------------------------------------------------------------------------------------------------------------------
-
-![help](https://github.com/febinrev/quester/raw/main/screenshots/help.png)
+![help](https://github.com/febinrev/quester/raw/main/screenshots/help1.png)
 
 
 Examples:
