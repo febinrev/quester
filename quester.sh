@@ -40,8 +40,8 @@ extract_endpoints(){
 URL=$1
 printf "Endpoints in $URL\n"
 printf "*********************\n"
-curl "$URL" --connect-timeout 2  -s | sed s/"http:"/"\nhttp:"/g | tr "<> " "\n" | sed s/"'"/"\n"/g | sed s/'"'/"\n"/g | grep http://
-curl "$URL" --connect-timeout 2  -s  | sed s/"https:"/"\nhttps:"/g | tr "<> " "\n" | sed s/"'"/"\n"/g | sed s/'"'/"\n"/g | grep https://
+curl "$URL" --connect-timeout 2  -s | strings |  sed s/"http:"/"\nhttp:"/g | tr "<> " "\n" | sed s/"'"/"\n"/g | sed s/'"'/"\n"/g | grep http://
+curl "$URL" --connect-timeout 2  -s  | strings | sed s/"https:"/"\nhttps:"/g | tr "<> " "\n" | sed s/"'"/"\n"/g | sed s/'"'/"\n"/g | grep https://
 
 printf "*********************\n"
 
@@ -54,7 +54,7 @@ URL=$1
 
 printf "Parameters In $URL\n"
 printf "~~~~~~~~~~~~~~~~~~~~~\n"
-curl $URL --connect-timeout 2 -s | grep "<input " | sed s/name=/"\nPaRam:"/g | sed s/" "/"\n"/g | tr "<>" "\n" | grep "PaRam:" | sed s/"PaRam:"//g
+curl $URL --connect-timeout 2 -s | strings | grep "<input " | sed s/name=/"\nPaRam:"/g | sed s/" "/"\n"/g | tr "<>" "\n" | grep "PaRam:" | sed s/"PaRam:"//g
 
 printf "\n~~~~~~~~~~~~~~~~~~~~~\n"
 }
