@@ -121,7 +121,7 @@ then
 	then
 	printf "Domain/URL                                                                                HTTP Status            Content-Length  \n"
 	printf "\n"          
-		for w in $(cat $3)
+		for w in $(cat $3 | sort -u)
 		do                                                                                
 		geturl_curl $w | grep "HTTP/*.*$2"
 		done
@@ -131,7 +131,7 @@ then
 	then
 	printf "Domain/URL                                                                                HTTP Status            Content-Length  \n"
 	printf "\n"     
-	for w in $(cat $3)
+	for w in $(cat $3 | sort -u)
 	do                                                                                        
 	geturl_curl $w | grep "L: $2"
 	done
@@ -141,14 +141,14 @@ then
 	then
 	printf "Domain                                                                                     HTTP Status            Content-Length  \n"
 	printf "\n" 
-	for w in $(cat $2)
+	for w in $(cat $2 | sort -u)
 	do                                                                                            
 	getdomain_curl $w | grep "HTTP/*.*"
 	done
 	
 	elif [ "$1" == "-endpoints" ] && [ -f $2 ]
 	then
-		for w in $(cat $2)
+		for w in $(cat $2 | sort -u)
 		do   
 		extract_endpoints $w
 		done
@@ -160,7 +160,7 @@ then
 	
 	elif [ "$1" == "-parameters" ] && [ -f $2 ]
 	then
-		for w in $(cat $2)
+		for w in $(cat $2 | sort -u)
 		do   
 		getparams $w
 		done
@@ -171,7 +171,7 @@ then
 
 	elif [ "$1" == "-shodan" ] && [ -f $2 ]
 	then
-		for w in $(cat $2)
+		for w in $(cat $2 | sort -u)
 		do   
 		shodan1 $w
 		done
@@ -186,7 +186,7 @@ then
 	then
 		printf "Domain/URL                                                                                HTTP Status            Content-Length  \n"
 		printf "\n"              
-		for w in $(cat $2)
+		for w in $(cat $2 | sort -u)
 		do                                                                            
 		geturl_curl $w
 		done
