@@ -75,7 +75,7 @@ printf "\n"
 
 
 
-extract_endpoints(){
+extract_endpoint(){
 URL=$1
 printf "Endpoints in $URL\n"
 printf "*********************\n"
@@ -93,6 +93,27 @@ urls $URL | sort -u
 
 printf "\n*********************\n"
 
+
+
+}
+
+endpoints_online(){
+URL=$1
+printf "Endpoints in $URL\n"
+printf "*********************\n"
+user_agent_num=$(shuf -i 0-30 -n 1)
+
+curl https://www.bulkdachecker.com/url-extractor/extract.php -X POST -d "type=6&url=$URL" -H "User-Agent: $useragent" --connect-timeout 2  -s 
+
+
+printf "\n*********************\n"
+
+}
+
+extract_endpoints(){
+
+
+endpoints_online $1 2>/dev/null || extract_endpoint $1
 
 
 }
@@ -124,6 +145,15 @@ else
 fi
 }
 
+cms(){
+URL=$1
+
+curl -L -s "https://whatcms.org/APIEndpoint?key=759cba81d90c6188ec5f7d2e2bf8568501a748d752fd2acdba45ee361181f58d07df7d&url=$URL" | jq | grep "id\|name\|confidence\|version\|cms_url" | tr -d '"'
+
+
+
+}
+
 
 usage(){
 	printf "
@@ -147,6 +177,7 @@ $0 [options] <wordlist>
  $0 -parameters -url http://target.com/index            # Extracts Parameters from the given URL
  $0 -shodan domains.txt                                 # Searches the domains in Shodan database
  $0 -shodan -domain target.com                          # Searches the given domain in Shodan
+ $0 -cms <url>                                          #  Detects the CMS of given URL
 
 			\n"
 }
@@ -223,6 +254,11 @@ then
 	then
 	shodan1 $3
 
+	elif [ "$1" == "-cms" ] && [ $2 ] 
+	then
+	echo ""
+	cms $2
+	echo ""
 
 
 	elif [[ "$1" == "all" ]] || [[ "$1" == "-all" ]] && [ -f $2 ]
