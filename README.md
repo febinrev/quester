@@ -32,9 +32,9 @@ echo target.com | waybackurls > urls.txt
              ./quester.sh -subdomains subdomains.txt                            # Extracts Valid SubDomains, Compatible with subfinder
              ./quester.sh -parameters urls.txt                                  # Extracts Input Parameters from the given list of URLs
              ./quester.sh -parameters -url http://target.com/index              # Extracts Parameters from the given URL
-             ./quester.sh -shodan domains.txt                                 # Searches the domains in Shodan database
-             ./quester.sh -shodan -domain target.com                          # Searches the given domain in Shodan
-
+             ./quester.sh -shodan domains.txt                                   # Searches the domains in Shodan database
+             ./quester.sh -shodan -domain target.com                            # Searches the given domain in Shodan
+             ./quester.sh -cms <url>                                            #  Detects the CMS of given URL
 
     ------------------------------------------------------------------------------------------------------------------------------------------------
 ![help](https://github.com/febinrev/quester/raw/main/screenshots/help1.png)
